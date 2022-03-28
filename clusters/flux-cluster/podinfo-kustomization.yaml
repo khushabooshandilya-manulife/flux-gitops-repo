@@ -1,26 +1,25 @@
----
+--- 
 apiVersion: kustomize.toolkit.fluxcd.io/v1beta2
 kind: Kustomization
-metadata:
+metadata: 
   name: podinfo
   namespace: flux-system
-spec:
-   patches:
-   - patch: |-
-        apiVersion: autoscaling/v2beta2
-        kind: HorizontalPodAutoscaler
-        metadata:
-          name: podinfo
-        spec:
-          minReplicas: 3             
-     target:
-        name: podinfo
-        kind: HorizontalPodAutoscaler
+spec: 
   interval: 5m0s
+  patches: 
+    - 
+      patch: "apiVersion: autoscaling/v2beta2\n\
+          kind: HorizontalPodAutoscaler\n\
+          metadata:\n\
+          \x20 name: podinfo\n\
+          spec:\n\
+          \x20 minReplicas: 3             "
+      target: 
+        kind: HorizontalPodAutoscaler
+        name: podinfo
   path: ./kustomize
   prune: true
-  sourceRef:
+  sourceRef: 
     kind: GitRepository
     name: podinfo
   targetNamespace: default
-
