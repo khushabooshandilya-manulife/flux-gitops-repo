@@ -6,14 +6,14 @@ metadata:
   namespace: flux-system
 spec:
    patches:
-    - patch: |-
+   - patch: |-
         apiVersion: autoscaling/v2beta2
         kind: HorizontalPodAutoscaler
         metadata:
           name: podinfo
         spec:
           minReplicas: 3             
-      target:
+     target:
         name: podinfo
         kind: HorizontalPodAutoscaler
   interval: 5m0s
